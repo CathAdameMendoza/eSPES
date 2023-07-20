@@ -13,7 +13,7 @@ interface Credential {
   styleUrls: ['./login.page.scss']
 })
 export class LoginPage {
-  accountNumber: string = '';
+  mobileNumber: string = '';
   password: string = '';
   errorMessage: string = '';
   credentials: Credential[] = [];
@@ -38,7 +38,7 @@ export class LoginPage {
   submitLogin(loginForm: any) {
     const formData = new FormData();
 
-    formData.append('accountNumber', this.accountNumber);
+    formData.append('accountNumber', this.mobileNumber);
     formData.append('password', this.password);
     
     this.http.post('http://localhost/ionic/login.php', formData)

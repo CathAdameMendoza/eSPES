@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { Applicant as ImportedApplicant} from '../applicant.service';
 
-interface Consumer {
-  ConsumerID: string;
+interface Applicant {
   firstName: string;
+  middleName: string;
   lastName: string;
-  accountNumber: string;
-  areaNumber: string;
+  sex: string;
+  mobileNumber: string;
   municipality: string;
   username: string; 
   password: string;
@@ -21,36 +22,36 @@ interface Consumer {
   styleUrls: ['./admin-interface.page.scss'],
 })
 
-export class AdminInterfacePage implements OnInit {
-  ConsumerID: number;
+export class AdminInterfacePage {
   firstName: string;
+  middleName: string;
   lastName: string;
-  accountNumber: string;
-  areaNumber: string;
+  sex: string;
+  mobileNumber: string;
   municipality: string;
   username: string;
   password: string;
-  consumers: Consumer[] = [];
+  applicant: Applicant[] = [];
   searchText: string = '';
-  selectedConsumer: Consumer | null = null;
+  selectedApplicant: Applicant | null = null;
 
-  formData: Consumer = {
-    ConsumerID: '',
+  formData: Applicant = {
     firstName: '',
+    middleName: '',
     lastName: '',
-    accountNumber: '',
-    areaNumber: '',
+    sex: '',
+    mobileNumber: '',
     municipality: '',
     username: '',
     password: '',
   };
 
   constructor(private http: HttpClient, private router: Router, private alertController: AlertController) {
-    this.ConsumerID = 0;
     this.firstName = '';
+    this.middleName = '',
     this.lastName = '';
-    this.accountNumber = '';
-    this.areaNumber = '';
+    this.sex = '';
+    this.mobileNumber = '';
     this.municipality = '';
     this.username = '';
     this.password = '';
@@ -64,34 +65,36 @@ export class AdminInterfacePage implements OnInit {
   fetchConsumers() {
     this.http.get<any>('http://localhost/ionic/fetch.php').subscribe(
       (data) => {
-      this.consumers = data;
-      console.log(this.consumers);
+      this.applicant = data;
+      console.log(this.applicant);
     },
     (error) => {
-      console.error('Error fetching consumer data:', error);
+      console.error('Error fetching applicant data:', error);
     }
     );
   }
 
     // Fetch data in input fields 
-  populateFields(consumer: Consumer) {
-    this.selectedConsumer = consumer;
-    this.firstName = consumer.firstName;
-    this.lastName = consumer.lastName;
-    this.accountNumber = consumer.accountNumber;
-    this.areaNumber = consumer.areaNumber;
-    this.municipality = consumer.municipality;
-    this.username = consumer.username;
-    this.password = consumer.password;
+  populateFields(applicant: Applicant) {
+    this.selectedApplicant = applicant;
+    this.firstName = applicant.firstName;
+    this.middleName = applicant.middleName;
+    this.lastName = applicant.lastName;
+    this.sex = applicant.sex;
+    this.mobileNumber = applicant.mobileNumber;
+    this.municipality = applicant.municipality;
+    this.username = applicant.username;
+    this.password = applicant.password;
     }
 
     
   submitForm() {
     const data = {
       firstName: this.firstName,
+      middleName: this.middleName,
       lastName: this.lastName,
-      accountNumber: this.accountNumber,
-      areaNumber: this.areaNumber,
+      sex: this.sex,
+      mobileNumber: this.mobileNumber,
       municipality: this.municipality,
       username: this.municipality,
       password: this.password
@@ -110,13 +113,13 @@ export class AdminInterfacePage implements OnInit {
 }
 
   updateConsumer() {
-    if (this.selectedConsumer !== null) {
-        const formData: Consumer = {
-          ConsumerID: this.selectedConsumer.ConsumerID,
+    if (this.selectedApplicant !== null) {
+        const formData: Applicant = {
           firstName: this.firstName,
+          middleName: this.middleName,
           lastName: this.lastName,
-          accountNumber: this.accountNumber,
-          areaNumber: this.areaNumber,
+          sex: this.sex,
+          mobileNumber: this.mobileNumber,
           municipality: this.municipality,
           username: this.username,
           password: this.password
@@ -126,7 +129,7 @@ export class AdminInterfacePage implements OnInit {
       .subscribe(response => {
         console.log(response); // Handle success scenario
         // Reset selected customer and form fields
-        this.selectedConsumer = null;
+        this.selectedApplicant = null;
         this.clearForm();
         this.fetchConsumers(); // Update the customer list after the update
       });
@@ -134,14 +137,14 @@ export class AdminInterfacePage implements OnInit {
   }
   
 deleteConsumer() {
-  if (this.selectedConsumer !== null) {
-    const ConsumerID = this.selectedConsumer.ConsumerID;
-    const url = `http://localhost/ionic/superadmin-delete.php?ConsumerID=${ConsumerID}`;
+  if (this.selectedApplicant !== null) {
+    const ConsumerID = this.selectedApplicant.username;
+    const url = `http://localhost/ionic/superadmin-delete.php?username=${this.username}`;
 
     this.http.delete(url).subscribe(
       (response: any) => {
         console.log(response); // Handle success scenario
-        this.selectedConsumer = null; // Reset selected customer
+        this.selectedApplicant = null; // Reset selected customer
         this.clearForm();
         this.fetchConsumers(); // Update the customer list after the delete
       },
@@ -160,24 +163,25 @@ deleteConsumer() {
   // Clear Function
   clearForm() {
     this.firstName = '';
+    this.middleName = '';
     this.lastName = '';
-    this.accountNumber = '';
-    this.areaNumber = '';
+    this.sex = '';
+    this.mobileNumber = '';
     this.municipality = '';
     this.username = '';
     this.password = '';
   }
   
   // Search Function
-  get filteredConsumers(): Consumer[] {
-    return this.consumers.filter(consumer => {
-      const fullName = consumer.firstName + ' ' + consumer.lastName;
+  get filteredApplicant(): Applicant[] {
+    return this.applicant.filter(applicant => {
+      const fullName = applicant.firstName + ' ' + applicant.lastName;
       return fullName.toLowerCase().includes(this.searchText.toLowerCase()) ||
-        consumer.accountNumber.toLowerCase().includes(this.searchText.toLowerCase()) ||
-        consumer.areaNumber.toLowerCase().includes(this.searchText.toLowerCase()) ||
-        consumer.municipality.toLowerCase().includes(this.searchText.toLowerCase()) ||
-        consumer.username.toLowerCase().includes(this.searchText.toLowerCase()) ||
-        consumer.password.toLowerCase().includes(this.searchText.toLowerCase());
+      applicant.sex.toLowerCase().includes(this.searchText.toLowerCase()) ||
+      applicant.mobileNumber.toLowerCase().includes(this.searchText.toLowerCase()) ||
+      applicant.municipality.toLowerCase().includes(this.searchText.toLowerCase()) ||
+      applicant.username.toLowerCase().includes(this.searchText.toLowerCase()) ||
+      applicant.password.toLowerCase().includes(this.searchText.toLowerCase());
     });
   }
 

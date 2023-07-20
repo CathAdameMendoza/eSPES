@@ -1,9 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>Manage Consumer Information, Super Admin!</ion-title>
+    <ion-buttons slot="start"> </ion-buttons>
+    <ion-title>Manage Sutdent Employees Information, Super Admin!</ion-title>
     <ion-buttons slot="end">
       <ion-button class = "logout" (click)="confirmLogout()">
         Log Out
@@ -17,19 +15,22 @@
   <div class="container">
     <div class="row">
       <div class="column-left">
-        <h3 class="heading">Click on a consumer to display its information.</h3>
+        <h3 class="heading">Click on a Applicatnts to display its information.</h3>
         <br><br>
         <label class="firstname-left" for="firstName">First Name:</label><br>
         <input class="inputText" placeholder="Enter First name" type="text" id = "firstName" name="firstName" [(ngModel)] = "firstName"><br><br>
 
+        <label class="middlename-left" for="middleName">Middle Name:</label><br>
+        <input class="inputText" placeholder="Enter Middle name" type="text" id = "middleName" name="middleName" [(ngModel)] = "middleName"><br><br>
+
         <label class="lastname-left" for="lastName">Last Name:</label><br>
         <input class="inputText" placeholder="Enter Last name" type="text" id = "lastName" name="lastName" [(ngModel)] = "lastName"><br><br>
 
-        <label class="accountnumber-left" for="accountNumber">Account Number:</label><br>
-        <input class="inputText" placeholder="Enter Account number" type="number" id = "accountNumber" name="accountNumber" [(ngModel)] = "accountNumber"><br><br>
+        <label class="sex-left" for="sex">Sex:</label><br>
+        <input class="inputText" placeholder="Enter Sex" type="text" id = "Sex" name="sex" [(ngModel)] = "sex"><br><br>
 
-        <label class="areanumber-left" for="areaNumber">Area Number:</label><br>
-        <input class="inputText" placeholder="Enter Area Number" type="number" id = "areaNumber" name="areaNumber" [(ngModel)] = "areaNumber"><br><br>
+        <label class="mobilenumber-left" for="areaNumber">Mobile Number:</label><br>
+        <input class="inputText" placeholder="Enter Mobile Number" type="number" id = "moBileNumber" name="mobileNumber" [(ngModel)] = "mobileNumber"><br><br>
 
         <label class="municipality-left" for="municipality">Municipality:</label><br>
         <input class="inputText" placeholder="Enter Municipality" type="text" id = "municipality" name="municipality" [(ngModel)] = "municipality"><br><br>
@@ -42,19 +43,14 @@
 
         <div class="button-container">
           <button class="addButton" type = "submit" (click)="submitForm()">Add</button>
-          <button class="updateButton" (click)="updateConsumer()" *ngIf="selectedConsumer !== null">Update</button>
-          <button class="deleteButton" (click) = "deleteConsumer()" *ngIf="selectedConsumer !== null">Delete</button>
+          <button class="updateButton" (click)="updateConsumer()" *ngIf="selectedApplicant !== null">Update</button>
+          <button class="deleteButton" (click) = "deleteConsumer()" *ngIf="selectedApplicant !== null">Delete</button>
           <button class="clearButton" (click) = "clearForm()">Clear</button>
           <script src="admin-interface.page.ts" type="module"></script>
         </div>
       </div>
-
-      <div class="column-right">
-        <ion-img class="photo-about" src="assets/photo-about.jpg" alt="photo-about"></ion-img>
-      </div>
-    </div>
-  </div>
-
+    
+  <ion-content>
   <div class = "consumerinfo-table">
     <h1 class="info">Employee Information</h1>
     <input class = "search-input" type="text" [(ngModel)]="searchText" placeholder="Search">
@@ -62,21 +58,23 @@
     <table>
       <tr>
         <th class = "entity">First Name</th>
+        <th class = "entity">Middle Name</th>
         <th class = "entity">Last Name</th>
-        <th class = "entity">Account Number</th>
-        <th class = "entity">Area Number</th>
+        <th class = "entity">Sex</th>
+        <th class = "entity">Phone Number</th>
         <th class = "entity">Municipality</th>
         <th class = "entity">Username</th>
         <th class = "entity">Password</th>
       </tr>
-      <tr *ngFor="let consumer of filteredConsumers" (click) = "populateFields(consumer)">
-        <td class = "consumer-data">{{ consumer.firstName }}</td>
-        <td class = "consumer-data">{{ consumer.lastName }}</td>
-        <td class = "consumer-data">{{ consumer.accountNumber }}</td>
-        <td class = "consumer-data">{{ consumer.areaNumber }}</td>
-        <td class = "consumer-data">{{ consumer.municipality }}</td>
-        <td class = "consumer-data">{{ consumer.username}}</td>
-        <td class = "consumer-data">{{ maskPassword(consumer.password) }}</td>
+      <tr *ngFor="let applicants of filteredApplicant" (click) = "populateFields(applicants)">
+        <td class = "applicants-data">{{ applicants.firstName }}</td>
+        <td class = "applicant-data">{{ applicants.middleName }}</td>
+        <td class = "applicant-data">{{ applicants.lastName }}</td>
+        <td class = "applicants-data">{{ applicants.sex }}</td>
+        <td class = "applicants-data">{{ applicants.mobileNumber }}</td>
+        <td class = "applicants-data">{{ applicants.municipality }}</td>
+        <td class = "applicants-data">{{ applicants.username}}</td>
+        <td class = "applicants-data">{{ maskPassword(applicants.password) }}</td>
       </tr>
     </table>
     </div>

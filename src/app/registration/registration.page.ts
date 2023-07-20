@@ -10,9 +10,10 @@ import { AlertController } from '@ionic/angular';
 })
 export class RegistrationPage {
   firstName: string = '';
+  middleName: string = '';
   lastName: string = '';
-  accountNumber: string = '';
-  areaNumber: string = '';
+  sex: string = '';
+  mobileNumber: string = '';
   municipality: string = '';
   username: string = '';
   password: string = '';
@@ -23,9 +24,10 @@ export class RegistrationPage {
     if (this.isFormValid()) {
       const formData = new FormData();
       formData.append('firstName', this.firstName);
+      formData.append('middleName', this.middleName);
       formData.append('lastName', this.lastName);
-      formData.append('accountNumber', this.accountNumber);
-      formData.append('areaNumber', this.areaNumber);
+      formData.append('sex', this.sex);
+      formData.append('mobileNumber', this.mobileNumber);
       formData.append('municipality', this.municipality);
       formData.append('username', this.username);
       formData.append('password', this.password);
@@ -52,9 +54,10 @@ export class RegistrationPage {
     // Check if any required field is empty
     return (
       !!this.firstName &&
+      !!this.middleName &&
       !!this.lastName &&
-      !!this.accountNumber &&
-      !!this.areaNumber &&
+      !!this.sex &&
+      !!this.mobileNumber &&
       !!this.municipality &&
       !!this.username &&
       !!this.password

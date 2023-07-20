@@ -6,12 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 
-export class Consumer {
-  ConsumerID: number = 0 ;
+export class Applicant {
   firstName: string = '';
+  middleName: string = '';
   lastName: string = '';
-  accountNumber: string = '';
-  areaNumber: string = '';
+  sex: string = '';
+  mobileNumber: string = '';
   municipality: string = '';
   username: string = '';
   password: string = '';
@@ -19,16 +19,16 @@ export class Consumer {
   constructor() { }
 }
 
-export class ConsumerService {
+export class ApplicantService {
   constructor() {}
   }
 
-export interface ConsumerData {
-  ConsumerID: number;
+export interface ApplicantData {
   firstName: string;
+  middleName: string;
   lastName: string;
-  accountNumber: number;
-  areaNumber: number;
+  sex: number;
+  mobileNumber: number;
   municipality: string;
   username: string;
   password: string;
