@@ -1,0 +1,85 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Manage Consumer Information, Super Admin!</ion-title>
+    <ion-buttons slot="end">
+      <ion-button class = "logout" (click)="confirmLogout()">
+        Log Out
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1 class="cooperative-name">Special Program for Student Employees</h1>
+  <div class="container">
+    <div class="row">
+      <div class="column-left">
+        <h3 class="heading">Click on a consumer to display its information.</h3>
+        <br><br>
+        <label class="firstname-left" for="firstName">First Name:</label><br>
+        <input class="inputText" placeholder="Enter First name" type="text" id = "firstName" name="firstName" [(ngModel)] = "firstName"><br><br>
+
+        <label class="lastname-left" for="lastName">Last Name:</label><br>
+        <input class="inputText" placeholder="Enter Last name" type="text" id = "lastName" name="lastName" [(ngModel)] = "lastName"><br><br>
+
+        <label class="accountnumber-left" for="accountNumber">Account Number:</label><br>
+        <input class="inputText" placeholder="Enter Account number" type="number" id = "accountNumber" name="accountNumber" [(ngModel)] = "accountNumber"><br><br>
+
+        <label class="areanumber-left" for="areaNumber">Area Number:</label><br>
+        <input class="inputText" placeholder="Enter Area Number" type="number" id = "areaNumber" name="areaNumber" [(ngModel)] = "areaNumber"><br><br>
+
+        <label class="municipality-left" for="municipality">Municipality:</label><br>
+        <input class="inputText" placeholder="Enter Municipality" type="text" id = "municipality" name="municipality" [(ngModel)] = "municipality"><br><br>
+
+        <label class="username-left" for="username">Username</label><br>
+        <input class="inputText" placeholder="Enter Username" type="text" id = "username" name="username" [(ngModel)] = "username"><br><br>
+
+        <label class="password-left" for="password">Password:</label><br>
+        <input class="inputText" placeholder="Enter Password" type="password" id = "password" name="password" [(ngModel)] = "password"><br><br>
+
+        <div class="button-container">
+          <button class="addButton" type = "submit" (click)="submitForm()">Add</button>
+          <button class="updateButton" (click)="updateConsumer()" *ngIf="selectedConsumer !== null">Update</button>
+          <button class="deleteButton" (click) = "deleteConsumer()" *ngIf="selectedConsumer !== null">Delete</button>
+          <button class="clearButton" (click) = "clearForm()">Clear</button>
+          <script src="admin-interface.page.ts" type="module"></script>
+        </div>
+      </div>
+
+      <div class="column-right">
+        <ion-img class="photo-about" src="assets/photo-about.jpg" alt="photo-about"></ion-img>
+      </div>
+    </div>
+  </div>
+
+  <div class = "consumerinfo-table">
+    <h1 class="info">Employee Information</h1>
+    <input class = "search-input" type="text" [(ngModel)]="searchText" placeholder="Search">
+    <div class = "table-container">
+    <table>
+      <tr>
+        <th class = "entity">First Name</th>
+        <th class = "entity">Last Name</th>
+        <th class = "entity">Account Number</th>
+        <th class = "entity">Area Number</th>
+        <th class = "entity">Municipality</th>
+        <th class = "entity">Username</th>
+        <th class = "entity">Password</th>
+      </tr>
+      <tr *ngFor="let consumer of filteredConsumers" (click) = "populateFields(consumer)">
+        <td class = "consumer-data">{{ consumer.firstName }}</td>
+        <td class = "consumer-data">{{ consumer.lastName }}</td>
+        <td class = "consumer-data">{{ consumer.accountNumber }}</td>
+        <td class = "consumer-data">{{ consumer.areaNumber }}</td>
+        <td class = "consumer-data">{{ consumer.municipality }}</td>
+        <td class = "consumer-data">{{ consumer.username}}</td>
+        <td class = "consumer-data">{{ maskPassword(consumer.password) }}</td>
+      </tr>
+    </table>
+    </div>
+  </div>
+  <small class = "note">Please direct to web view to check whole table.</small>
+</ion-content>

@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Registration Form -->
+<ion-content>
+  <div class = "background-image">
+    <div class = "container">
+      <div class = "fill-up">
+        <h1 class = "batelec">SPES</h1>
+        <div class = "fill-up-container">
+    <ion-item lines="full" class = "custom-item">
+      <ion-input type="text" [(ngModel)] = "firstName" name="firstName" placeholder = "First Name" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full" class = "custom-item">
+      <ion-input type="text" [(ngModel)] = "lastName" name="lastName" placeholder = "Last Name" required ></ion-input>
+    </ion-item>
+
+    <ion-item lines="full" class = "custom-item">
+      <ion-input type="text" [(ngModel)] = "accountNumber" name="Birthday" placeholder = "Birthday" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full" class = "custom-item">
+      <ion-input type="number" [(ngModel)] = "areaNumber" name="areaNumber" placeholder = "Area number" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full" class = "custom-item">
+      <ion-input type="text" [(ngModel)] = "municipality" name = "municipality" placeholder = "Municipality" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full" class = "custom-item">
+      <ion-input type="text" [(ngModel)] = "username" name="username" placeholder = "Username" required></ion-input>
+    </ion-item>
+    
+    <ion-item lines="full" class = "custom-item">
+      <ion-input type="password" [(ngModel)] = "password" name="password" placeholder = "Password" required></ion-input>
+    </ion-item>
+
+<!-- Button -->
+    <ion-row>
+      <ion-col>
+        <ion-button shape = "round" expand = "block" type = "submit" color = "danger" (click) = "submitForm()">Sign Up</ion-button>
+      </ion-col>
+    </ion-row>
+    </div>
+    </div>
+    </div>
+    </div>
+    </ion-content>

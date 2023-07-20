@@ -1,0 +1,226 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: 'Oswald';
+}
+
+.logout {
+    margin-right: 30px;
+}
+
+.cooperative-name {
+    font-size: 40px;
+    color: #bfa721;
+    display: flex;
+    justify-content: center;
+}
+/* Label and Input - Left side */
+
+.firstname-left {
+    font-size: 15px;
+}
+
+.lastname-left {
+    font-size: 15px;
+}
+
+.accountnumber-left {
+    font-size: 15px;
+}
+
+.areanumber-left {
+    font-size: 15px;
+}
+
+.municipality-left {
+    font-size: 15px;
+}
+.username-left {
+    font-size: 15px;
+}
+
+.password-left {
+    font-size: 20px;
+}
+
+.inputText {
+    font-size: 15px;
+    width: 100%;
+}
+
+.container {
+    display: grid;
+    gap: 20px;
+}
+
+.row {
+    display: flex;
+}
+  
+.column-left {
+    padding: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+.addButton {
+    margin-right: 10px;
+    display: flex;
+    padding: 10px;
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.updateButton {
+    margin-right: 10px;
+    display: flex;
+    padding: 10px;
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.deleteButton {
+    margin-right: 10px;
+    display: flex;
+    padding: 10px;
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.clearButton {
+    margin-right: 10px;
+    display: flex;
+    padding: 10px;
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+  
+/* Image */
+
+.column-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+}
+
+.photo-about {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    width: 100%;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    padding: 20px;
+}
+
+/* Table */
+.consumerinfo-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #000000;
+    border-radius: 8px;
+}
+
+.entity:hover {
+    color: #007bff;
+}
+
+.consumer-data:hover {
+    color: #bfa721;
+}
+
+/* Consumer Info */
+.table-container {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.info {
+    display: flex;
+    justify-content: center;
+    color: #95A5A6;
+}
+
+.entity {
+    font-weight: bold;
+    font-size: 20px;
+    justify-content: center;
+    padding: 8px;
+    margin-right: 10px;
+    color: #f5998d;
+}
+
+.consumer-data {
+    padding: 8px;
+    color: #95A5A6;
+    text-align: center;
+}
+
+.entity-username {
+    display: none;
+}
+
+.consumer-data-username {
+    display: none;
+}
+
+.entity-password {
+    display: none;
+}
+
+.consumer-data-password {
+    display: none;
+}
+
+/* Search */
+.search-input {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 400px;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+}
+  
+.search-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+@media (max-width: 828px) {
+
+    .cooperative-name {
+        text-align: center;
+    }
+
+    .heading {
+        text-align: justify;
+    }
+
+    .photo-about
+    {
+        display: none;
+    }
+      
+}

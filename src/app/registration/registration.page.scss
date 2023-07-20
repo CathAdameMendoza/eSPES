@@ -1,0 +1,71 @@
+* {
+	font-family: 'Oswald';
+}
+
+.fill-fields {
+    text-indent: 15px;
+    color: #fa1e0a;
+}
+
+.batelec {
+    color: #a08b15;;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-item {
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 10px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-bottom: 150px;
+}
+
+.fill-up-container {
+    background-color: rgb(73, 72, 72);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.background-image {
+    position: relative;
+}
+  
+.background-image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 500px;
+    background-image: url('/assets/photo-superadmin.jpg');
+    background-size: cover; 
+    background-position: center;
+    opacity: 0.3;
+  }
+
+@media (max-width: 828px) {
+
+    .container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    
+    .batelec {
+        margin-top: 100px;
+    }
+}
+
+
+
+  

@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Log In</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class = "background-image">
+  <div class = "container">
+  <form (ngSubmit)="submitLogin(loginForm)" #loginForm="ngForm">
+    <div class = "fill-up">
+      <h1 class = "SPES">SPES
+        
+      </h1>
+      <div class = "fill-up-container">
+    <ion-item lines="full" class = "custom-item">
+      <ion-input type="email" name="email" [(ngModel)]="accountNumber" placeholder = "Account Number" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full" class = "custom-item">
+      <ion-input type="password" name="password" [(ngModel)]="password" placeholder = "Password" required></ion-input>
+    </ion-item>
+
+    <!-- Error message -->
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+  <!-- Button -->
+    <ion-row>
+      <ion-col>
+        <ion-button type = "submit" shape = "round" color="danger" expand="block" [disabled] = "loginForm.invalid">Sign In</ion-button>
+        <a [routerLink]="['/forgot-password']" class="forgot-password">Forgot Password?</a>
+      </ion-col>
+      </ion-row>
+      </div>
+      </div>
+    </form>
+    </div>
+    </div>
+</ion-content>

@@ -1,0 +1,14 @@
+<h1>Welcome to the Protected Page</h1>
+
+<p>This is a protected page that can only be accessed by authenticated users.</p>
+
+<div *ngIf="isLoggedIn">
+  <p>You are currently logged in.</p>
+  <!-- Add additional content or functionality for authenticated users -->
+</div>
+
+<div *ngIf="!isLoggedIn">
+  <p>Please log in to access this page.</p>
+  <!-- Add login form or redirect to the login page -->
+</div>
+  

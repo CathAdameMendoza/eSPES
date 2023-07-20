@@ -1,0 +1,34 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <div class="menu-toggle-button" *ngIf="isMinimized">
+        <ion-menu-button auto-hide="false"></ion-menu-button>
+      </div>
+      <div class="avatar-container">
+        <ion-avatar><img src="assets/batelec-logo.png" alt="logo"></ion-avatar>
+      </div>
+      <ion-title>SPES</ion-title>
+    </ion-buttons>
+    <ion-buttons slot="end" class = "responsive-buttons">
+      <ion-button [routerLink]="['/about']" expand="block" class = "about-button">ABOUT </ion-button>
+      <ion-button [routerLink]="['/registration']" expand="block" class = "hide-sm">SIGN UP</ion-button>
+      <ion-button [routerLink]="['/login']" expand="block" class = "hide-sm">LOGIN</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="auth-form">
+  <ion-grid>
+    <ion-row>
+      <ion-col align-self-center>
+      <div class = "background-image">
+        <br><h1 class = "cooperative-name">Special Program for Student Employees</h1><br>
+        <ion-img class = "responsive-image" 
+        src="assets/batelec-logo.png" alt="batelec-image" width = "400" height = "500"></ion-img> 
+        <br><br><ion-button class = "get-started" [routerLink]="['/home']" shape = "round" expand="block" color="warning">Get Started</ion-button><br>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
